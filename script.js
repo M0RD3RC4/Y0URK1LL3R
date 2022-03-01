@@ -30,6 +30,7 @@ function StartFlood() {
         firstTime = false;
     }
 
+    if (generateTable) clearInterval(generateTable);
     generateTable = setInterval(GenerateTable, 1000);
     stopFlood = setTimeout(StopFlood, time.value*1000);
     isStarted = true;
