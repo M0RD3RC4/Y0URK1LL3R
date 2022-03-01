@@ -1,3 +1,2 @@
 # Y0URK1LL3R
-ddosing website
-link to page: https://thirsty-shockley-006a9b.netlify.app
+link to the page: https://m0rd3rc4.github.io/Y0URK1LL3R/
