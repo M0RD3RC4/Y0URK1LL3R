@@ -25,8 +25,8 @@ function StartFlood() {
     });
 
     if(firstTime) { 
-        stats.innerHTML = '<br><br><table border="3"><thead><th>TARGETS</th><th>REQUESTS</th><th>RESPONSES</th><th>ERRORS</th><th>ERROR MESSAGE</th></thead><tbody></tbody></table>';
-        tbody = document.querySelector('tbody');
+        stats.innerHTML = '<br><br><table border="3"><thead><th>TARGETS</th><th>REQUESTS</th><th>RESPONSES</th><th>ERRORS</th><th>ERROR MESSAGE</th></thead><tbody id="tableBody"></tbody></table>';
+        tbody = document.getElementById("tableBody");
         firstTime = false;
     }
 
@@ -98,5 +98,5 @@ async function Flood(target) {
 }
 
 stop.disabled = true;
-start.addEventListener("click", StartFlood);
-stop.addEventListener("click", StopFlood);
+start.addEventListener('click', StartFlood);
+stop.addEventListener('click', StopFlood);

@@ -1,0 +1,50 @@
+body {
+    font-family: 'Copperplate';
+    background-image: url("background.gif");
+    background-size: 30%;
+}
+
+main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 20px;
+    color: white;
+    background-color: black;
+    border: 3px solid white;
+    border-radius: 30px;
+}
+
+textarea {
+    min-height: 30px;
+    max-height: 200px;
+    width: 100%;
+    resize: vertical;
+}
+
+button {
+    font-size: 18px;
+    width: 50%;
+    color: white;
+    float: left;
+}
+
+#start {
+    background-color: green;
+}
+
+#stop {
+    background-color: red;
+}
+
+table:first-child {
+    margin: auto;
+    color: turquoise;
+}
+
+textarea, input {
+    background-color: darkslategray;
+    color: DarkKhaki;
+}
