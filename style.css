@@ -1,6 +1,6 @@
 body {
     font-family: 'Copperplate';
-    background-image: url("background.gif");
+    background-color: #29434e;
     background-size: 30%;
 }
 
@@ -12,8 +12,8 @@ main {
 
     padding: 20px;
     color: white;
-    background-color: black;
-    border: 3px solid white;
+    background-color: #546e7a;
+    border: 3px solid grey;
     border-radius: 30px;
 }
 
@@ -25,26 +25,56 @@ textarea {
 }
 
 button {
+    padding: 5px;
+    border: 0;
+    background-color: #29434e;
+    cursor: pointer;
     font-size: 18px;
     width: 50%;
     color: white;
     float: left;
 }
 
-#start {
-    background-color: green;
+button:disabled {
+    background-color: #819ca9;
+    color: #a7c0cd;
+    cursor: default;
 }
 
-#stop {
-    background-color: red;
-}
-
-table:first-child {
+table:first-of-type {
     margin: auto;
-    color: turquoise;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+    margin: 0 0 10px 0;
 }
 
 textarea, input {
     background-color: darkslategray;
     color: DarkKhaki;
 }
+#stats table {
+    border-collapse: collapse;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #484848;
+    color: white;
+ }
+
+ #stats td, th {
+    color: #babdbe;
+    padding: 5px;
+    border: 3px solid black;
+ }
+
+ #stats th {
+     color: lime;
+ }
+
+ a { 
+     color: #00b8d4;
+ }

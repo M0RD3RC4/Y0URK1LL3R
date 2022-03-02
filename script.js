@@ -25,7 +25,7 @@ function StartFlood() {
     });
 
     if(firstTime) { 
-        stats.innerHTML = '<br><br><table border="3"><thead><th>TARGETS</th><th>REQUESTS</th><th>RESPONSES</th><th>ERRORS</th><th>ERROR MESSAGE</th></thead><tbody id="tableBody"></tbody></table>';
+        stats.innerHTML = '<br><br><table><thead><th>TARGETS</th><th>REQUESTS</th><th>RESPONSES</th><th>ERRORS</th><th>ERROR MESSAGE</th></thead><tbody id="tableBody"></tbody></table>';
         tbody = document.getElementById("tableBody");
         firstTime = false;
     }
@@ -53,7 +53,7 @@ function StopFlood() {
 function GenerateTable() {
     tbody.innerHTML = null;
     targets.forEach((target, index) => {
-        tbody.innerHTML += '<tr><td>' + target + '</td><td>' + targetStats[target].requests + '</td><td>' + targetStats[target].responses + '</td><td>' + targetStats[target].errors + '</td><td>' + targetStats[target].errorMessage + '</td></tr>';
+        tbody.innerHTML += '<tr><td><a href="' + target + '">' + target + '</a></td><td>' + targetStats[target].requests + '</td><td>' + targetStats[target].responses + '</td><td>' + targetStats[target].errors + '</td><td>' + targetStats[target].errorMessage + '</td></tr>';
     });
 }
 
