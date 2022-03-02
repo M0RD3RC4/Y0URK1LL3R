@@ -2,6 +2,8 @@ var textarea = document.getElementById('targets');
 var time = document.getElementById('time');
 var timeout = document.getElementById('timeout');
 var threads = document.getElementById('threads');
+var checkbox = document.getElementById('checkbox');
+var audio = document.getElementById('audio');
 var start = document.getElementById('start');
 var stop = document.getElementById('stop');
 var stats = document.getElementById('stats');
@@ -97,6 +99,12 @@ async function Flood(target) {
     }
 }
 
+function Music() {
+    if(checkbox.checked) audio.play();
+    else audio.pause();
+}
+
 stop.disabled = true;
+checkbox.addEventListener('click', Music);
 start.addEventListener('click', StartFlood);
 stop.addEventListener('click', StopFlood);
