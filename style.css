@@ -31,13 +31,13 @@ button {
     cursor: pointer;
     font-size: 18px;
     width: 50%;
-    color: white;
+    color: DarkKhaki;
     float: left;
 }
 
 button:disabled {
     background-color: #819ca9;
-    color: #a7c0cd;
+    color: lightgray;
     cursor: default;
 }
 
